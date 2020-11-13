@@ -65,18 +65,32 @@ const App = () => {
     // })
   }
 
-  const buttonStyle = {
-    backgroundColor: 'green',
-    color: 'white',
-    font: 'inherit',
-    border: '1x solid blue',
-    padding: '8px',
-    cursor: 'pointer',
-    ':hover':{
-      backgroundColor: 'lightgreen',
-      color: 'black'
+  // const buttonStyle = {
+  //   backgroundColor: 'green',
+  //   color: 'white',
+  //   font: 'inherit',
+  //   border: '1x solid blue',
+  //   padding: '8px',
+  //   cursor: 'pointer',
+  //   ':hover':{
+  //     backgroundColor: 'lightgreen',
+  //     color: 'black'
+  //   }
+  // }
+
+  const ButtonStyle = styled.button`
+    background-color: ${props => props.alt ? 'green' : 'red'};
+    color: white;
+    font: inherit;
+    border: 1x solid blue;
+    padding: 8px;
+    cursor: pointer;
+    
+    &:hover {
+      backgroundColor: lightgreen;
+      color: black;
     }
-  }
+  `
 
   const PersonListToggleHandler = () => {
     // update show others status
@@ -135,8 +149,8 @@ const App = () => {
           /> */}
       </div>
     )
-    buttonStyle.backgroundColor='red';
-    buttonStyle[':hover'] = {
+    ButtonStyle.backgroundColor='red';
+    ButtonStyle[':hover'] = {
       backgroundColor: 'orange',
       color: 'white'
     }
@@ -156,7 +170,7 @@ const App = () => {
     // <StyleRoot>
     <div className="App">
       <h1 className={cssClasses}>Hello I'm new to React !!</h1>
-      <button style={buttonStyle} onClick={PersonListToggleHandler}>Toggle Person List</button>   {/* inefficient way*/}
+      <ButtonStyle alt={personState.showOthers} onClick={PersonListToggleHandler}>Toggle Person List</ButtonStyle>   {/* inefficient way*/}
       {/* <button style={buttonStyle} onClick={() => swtichNameHandler("Sagar Alias Jacky")}>Click Me</button>   inefficient way */}
       {/* Alternative way of doing  */}
       {/* <button onClick={swtichNameHandler.bind(this, "Sagar Alias Jacky")}>Test Button</button> */}
